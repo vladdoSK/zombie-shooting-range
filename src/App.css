@@ -1,0 +1,89 @@
+.App{
+  width: 100vw;
+  height: 100vh;
+  cursor: url('./images/cursor.png') 24 24, pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.block_game{
+  position: relative;
+  width: 85%;
+}
+
+
+
+.table_info{
+  box-sizing: border-box;
+  width: 15%;
+  cursor: default ;
+  background: url('./images/main_back.jpg') no-repeat;
+  background-size: cover;
+  position: relative;
+  border: 8px solid #b71709;
+}
+
+.block_score{
+  text-align: center;
+}
+
+.time, p{
+  margin: 0 auto;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.time.active{
+  color: rgb(255, 0, 0);
+}
+
+
+.record{
+  color:rgb(22, 1, 130);
+  font-style: oblique;
+}
+
+
+
+@media (max-aspect-ratio: 2/2.1){
+
+  .App{
+    flex-direction: column;
+  }
+
+  .block_game{
+    position: relative;
+    width: 100vw;
+    height: 75%;
+  }
+
+  .table_info{
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    bottom: 0;
+  }
+
+  .block_zomby {
+    top: 0;
+  }
+}
+
+@media (max-width:536px){
+  .table_info h1,
+  .table_info p{
+    font-size: 18px;
+  }
+}
+
+
+@media (max-height:536px){
+  .table_info h1,
+  .table_info p{
+    font-size: 15px;
+  }
+}
+

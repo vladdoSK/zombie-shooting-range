@@ -1,0 +1,100 @@
+.block_patron{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    flex-wrap: wrap;
+    bottom: 50px;
+}
+
+.patron{
+    width: 20px;
+    height: 50px;
+    background: url('../../images/shot.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 10px;
+}
+
+@media (max-width:1350px){
+    .block_patron{
+        bottom: 50px;
+        height: 300px;
+    }
+    .patron{
+        width: 20px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    h1, h3{
+        font-size: 25px;
+    }
+}
+
+@media (max-width:1200px){
+    
+    h1, h3, p{
+        font-size: 18px;
+    }
+
+    .block_patron{
+        bottom: 50px;
+        height: 300px;
+    }
+    .patron{
+        width: 15px;
+        height: 40px;
+        margin: 5px;
+    }
+}
+
+@media (max-width:811px){
+    .block_patron{
+        bottom: 30px;
+        height: 100px;
+    }
+    .patron{
+        width: 20px;
+        height: 50px;
+        margin: 5px;
+    }
+}
+
+
+@media (max-width:620px){
+    .block_patron{
+        height: 100px;
+        bottom: 20px;
+    }
+    .patron{
+        width: 20px;
+        height: 50px;
+        margin: 0 15px;
+    }
+}
+
+@media (max-width:536px){
+    .block_patron{
+        height: 80px;
+        bottom: 10px;
+    }
+    .patron{
+        width: 10px;
+        height: 35px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-height:536px){
+    .block_patron{
+        height: 150px;
+        bottom: 10px;
+    }
+    .patron{
+        width: 8px;
+        height: 25px;
+        margin: 7px;
+    }
+}

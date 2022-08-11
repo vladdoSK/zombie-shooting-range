@@ -1,0 +1,13 @@
+.salute{
+    position: absolute;
+    top: -150px;
+}
+
+.cong{
+    z-index: 2;
+}
+
+.btn_modal{
+    cursor: pointer;
+    z-index: 2;
+}

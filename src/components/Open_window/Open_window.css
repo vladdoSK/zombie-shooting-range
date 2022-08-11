@@ -1,0 +1,292 @@
+.open_window {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(5, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    z-index: 3;
+    cursor: default;
+}
+
+.open_window.inactive {
+    transform: scale(0);
+}
+
+.content {
+    width: 800px;
+    height: 400px;
+    border-radius: 20px;
+    color: rgb(229, 247, 158);
+
+    border: 5px solid rgb(157, 162, 5);
+    background: linear-gradient(45deg, rgb(86, 50, 2), rgb(14, 82, 2));
+    animation: animation_back 4s ease infinite;
+    background-size: 400% 400%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    position: relative;
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.congratulation{
+    position: relative;
+    width: 70%;
+}
+
+.btn_block {
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.btn_modal {
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 20px;
+    border-radius: 30px;
+    background-image: linear-gradient(45deg, #6ad771 0%, #33de50 50%, #287800 100%);
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    box-shadow: 0 16px 32px 0 rgba(0, 40, 120, .35);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.btn_modal:hover {
+    box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+    background-position: 0 0;
+}
+
+@keyframes animation_back{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+.logo_1{
+    position: absolute;
+
+    left: 0;
+    animation-name: modal_point;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+
+.logo_2{
+    position: absolute;
+
+    right: 0;
+    animation-name: modal_point_2;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes modal_point{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes modal_point_2{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+.content--trainer{
+    position: absolute;
+    transform: scale(0);
+    z-index: 3;
+}
+
+.content--trainer.active{
+    transform: scale(1);
+}
+
+
+.img_train{
+    width: 100%;
+    height: 90%;
+    position: relative;
+}
+
+.img_train.active{
+    left: 0;
+    animation-name: img_float;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+.block_train{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    height: 250px;
+}
+
+.text_train{
+    width: 50%;
+    margin-left: 20px;
+    position: relative;
+}
+
+.text_train.active{
+    right: 0;
+    animation-name: text_float;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+@keyframes text_float{
+    0%{
+        right: -150px;
+        opacity: 0;
+    }
+    100%{
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes img_float{
+    0%{
+        left: -150px;
+        opacity: 0;
+    }
+    100%{
+        left: 0px;
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+@media (max-width:900px){
+    .content {
+        width: 500px;
+        height: 320px;
+    }
+
+    h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    .congratulation{
+        width: 90%;
+    }
+
+    .btn_block {
+        width: 80%;
+    }
+
+    .logo_1, .logo_2{
+        width: 40px;
+        height: 40px;
+    }
+
+    .img_train{
+        width: 80%;
+        height: 90%;
+        position: relative;
+    }
+
+    .text_train{
+        width: 100%;
+        font-size: 18px;
+        margin-left: 0px;
+    }
+}
+
+@media (max-width:600px){
+    .content {
+        width: 300px;
+        height: 300px;
+    }
+
+    h1, h3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    .congratulation{
+        width: 100%;
+    }
+
+    .btn_block {
+        width: 100%;
+    }
+
+    .btn_modal {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    .logo_1, .logo_2{
+        width: 30px;
+        height: 30px;
+    }
+
+    .img_train{
+        width: 200px;
+        height: 100px;
+        position: relative;
+    }
+
+    .text_train{
+        width: 80%;
+        font-size: 12px;
+        position: absolute;
+        text-align: center;
+        left: 30px;
+        top: 200px;
+    }
+}
+
