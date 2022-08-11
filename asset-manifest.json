@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/zombie-shooting-range/static/css/main.5c2bf8bd.css",
+    "main.js": "/zombie-shooting-range/static/js/main.3bda5a08.js",
+    "static/media/start_music.mp3": "/zombie-shooting-range/static/media/start_music.e84ec1c232bb6dc71a22.mp3",
+    "static/media/train_1.png": "/zombie-shooting-range/static/media/train_1.82d99836d986b4d14f14.png",
+    "static/media/gimn.mp3": "/zombie-shooting-range/static/media/gimn.34229b8b36747e322ddd.mp3",
+    "static/media/finish.mp3": "/zombie-shooting-range/static/media/finish.d4d1a1f18b408697025a.mp3",
+    "static/media/congratulation.gif": "/zombie-shooting-range/static/media/congratulation.faa88116c7a33c8f6289.gif",
+    "static/media/back.jpg": "/zombie-shooting-range/static/media/back.a93af0528747fda5e727.jpg",
+    "static/media/clock_tak.mp3": "/zombie-shooting-range/static/media/clock_tak.5209d10dc95fc9c93cd1.mp3",
+    "static/media/alien.png": "/zombie-shooting-range/static/media/alien.d8c84847c2d152319ad9.png",
+    "static/media/zombi.png": "/zombie-shooting-range/static/media/zombi.b3b0bb12c44990099132.png",
+    "static/media/train_zomby.png": "/zombie-shooting-range/static/media/train_zomby.27269e8349d7f1b9c07d.png",
+    "static/media/train_shot.png": "/zombie-shooting-range/static/media/train_shot.ba1c500707b60ae07b5a.png",
+    "static/media/cursor.png": "/zombie-shooting-range/static/media/cursor.d0325a65b0422a54036d.png",
+    "static/media/train_time.png": "/zombie-shooting-range/static/media/train_time.00fc6f8f0a84bf86a057.png",
+    "static/media/shot.mp3": "/zombie-shooting-range/static/media/shot.7b5ebdb96d948ad93182.mp3",
+    "static/media/main_back.jpg": "/zombie-shooting-range/static/media/main_back.db7eb53fc1df10be5385.jpg",
+    "static/media/shot.png": "/zombie-shooting-range/static/media/shot.214c5ae71675d8b905db.png",
+    "index.html": "/zombie-shooting-range/index.html",
+    "main.5c2bf8bd.css.map": "/zombie-shooting-range/static/css/main.5c2bf8bd.css.map",
+    "main.3bda5a08.js.map": "/zombie-shooting-range/static/js/main.3bda5a08.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c2bf8bd.css",
+    "static/js/main.3bda5a08.js"
+  ]
+}
