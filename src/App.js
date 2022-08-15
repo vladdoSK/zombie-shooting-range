@@ -11,7 +11,7 @@ import finish_audio from './music/finish.mp3';
 import gimn from './music/gimn.mp3';
 import Finish_game from './components/Finish_game/Finish_game';
 import { useDispatch, useSelector } from 'react-redux';
-import { delete_point, new_record } from './redux/actionCreators';
+import { default_shots, delete_point, new_record, remove_shot } from './redux/actionCreators';
 
 
 function App() {
@@ -19,12 +19,10 @@ function App() {
   const dispatch = useDispatch();
   const point_redux = useSelector(state => state.point_r);
   const record_redux = useSelector(state => state.record_r);
+  const shot_redux = useSelector(state => state.shot_r);
 
-
+  
   const [timeId, setTimeId] = useState(true);
-
-
-  const [shots, setShots] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
   const [timeLeft, setTimeLeft] = useState(10);
   const [stringTime, setstringTime] = useState(`00:${timeLeft}`);
   const [redTime, setRedTIme] = useState(false);
@@ -43,7 +41,7 @@ function App() {
   //localStorage.clear();
 
   const isEndGame = async () => {
-    if ((shots.length == 0) || (timeLeft == 0)) {
+    if ((shot_redux.length == 0) || (timeLeft == 0)) {
       music.pause();
       music.currentTime = 0;
       setTimeLeft(0);
@@ -59,12 +57,12 @@ function App() {
       console.log(point_redux, record_redux);
 
       if (point_redux > record_redux) {
+
         await setIsRecord("You beat your record :)");
         localStorage.setItem('record', point_redux);
         console.log(parseInt(localStorage.getItem('record')));
         dispatch(new_record(parseInt(localStorage.getItem('record'))));
 
-        //await setRecord(parseInt(localStorage.getItem('record')));
       }
       else {
         setIsRecord("But you don't beat your record :(");
@@ -73,7 +71,7 @@ function App() {
   }
 
   const missShot = async () => {
-    await setShots(([...shots.slice(1)]));
+    dispatch(remove_shot(1));
     shot.play();
     isEndGame();
   }
@@ -101,11 +99,12 @@ function App() {
 
     dispatch(new_record(localStorage.getItem('record')))
     
-    //setRecord(localStorage.getItem('record'));
     setRedTIme(false);
     setIsModalWindow(true);
     setTimeLeft(30);
-    setShots([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+
+    dispatch(default_shots(1));
+
     const music = document.querySelector('.audio');
     music.play();
     setIsStart(true);
@@ -116,7 +115,7 @@ function App() {
     gimn_audio.currentTime = 0;
     
     dispatch(delete_point(point_redux));
-    //setPoints(0);
+
     if (timeId == true) {
       setInterval(async () => {
         await setTimeLeft((timeLeft) => (timeLeft >= 1 ? (timeLeft - 1) : 0));
@@ -140,12 +139,10 @@ function App() {
       <div className='block_game' onClick={missShot}>
 
         <Aliens isStart={isStart}
-          patron={shots}
-          setShots={setShots} />
+          patron={shot_redux}/>
 
         <Zombies isStart={isStart}
-          patron={shots}
-          setShots={setShots} />
+          patron={shot_redux}/>
       </div>
 
       <div className='table_info'>
@@ -164,7 +161,7 @@ function App() {
           <p className='record'>{record_redux}</p>
         </div>
 
-        <Shot patron={shots} />
+        <Shot patron={shot_redux} />
       </div>
 
       <Finish_game isFinishGame={isFinishGame}

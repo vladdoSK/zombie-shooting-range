@@ -9,11 +9,7 @@ const Aliens = (props) => {
     const point_redux = useSelector(state => state);
 
     const add_points = (points) => {
-
         dispatch(add_point(points));
-
-        //props.setPoints(props.points + points);
-        //props.setShots(([...props.patron.slice(1)]));
     }
 
     return (

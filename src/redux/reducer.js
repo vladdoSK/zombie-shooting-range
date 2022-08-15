@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_POINT, DELETE_POINTS, NEW_RECORD } from './actionCreators';
+import { ADD_POINT, DEFAULT_SHOTS, DELETE_POINTS, NEW_RECORD, REMOVE_SHOT } from './actionCreators';
 
 
 const defaultState = 0;
@@ -25,7 +25,22 @@ const recordReducer = (state = defaultState, action) =>{
     }
 }
 
+const defaultShot = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+const shotReducer = (state = defaultShot, action) =>{
+    switch (action.type) {
+        case REMOVE_SHOT:
+            return [...state.slice(1)];
+        case DEFAULT_SHOTS:
+            return state = defaultShot;
+        default:
+            return state;
+    }
+}
+
+
 export const rootReducer = combineReducers({
     point_r: pointReducer,
-    record_r: recordReducer
+    record_r: recordReducer, 
+    shot_r: shotReducer,
 })
