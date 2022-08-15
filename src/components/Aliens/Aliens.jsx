@@ -1,11 +1,19 @@
 import React from "react";
 import "./Aliens.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { add_point } from "../../redux/actionCreators";
 
 const Aliens = (props) => {
     
+    const dispatch = useDispatch();
+    const point_redux = useSelector(state => state);
+
     const add_points = (points) => {
-        props.setPoints(props.points + points);
-        props.setShots(([...props.patron.slice(1)]));
+
+        dispatch(add_point(points));
+
+        //props.setPoints(props.points + points);
+        //props.setShots(([...props.patron.slice(1)]));
     }
 
     return (

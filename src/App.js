@@ -10,12 +10,20 @@ import start_music from './music/start_music.mp3';
 import finish_audio from './music/finish.mp3';
 import gimn from './music/gimn.mp3';
 import Finish_game from './components/Finish_game/Finish_game';
+import { useDispatch, useSelector } from 'react-redux';
+import { delete_point, new_record } from './redux/actionCreators';
+
 
 function App() {
 
+  const dispatch = useDispatch();
+  const point_redux = useSelector(state => state.point_r);
+  const record_redux = useSelector(state => state.record_r);
+
+
   const [timeId, setTimeId] = useState(true);
 
-  const [points, setPoints] = useState(0);  //Рахунок
+
   const [shots, setShots] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
   const [timeLeft, setTimeLeft] = useState(10);
   const [stringTime, setstringTime] = useState(`00:${timeLeft}`);
@@ -24,7 +32,6 @@ function App() {
   const [isCloseModal, setIsModalWindow] = useState(false);
   const [isFinishGame, setIsFinishGame] = useState(false);
 
-  const [record, setRecord] = useState(0);
   const [isRecord, setIsRecord] = useState("");
 
   const music = document.querySelector('.audio');
@@ -47,10 +54,17 @@ function App() {
         fin_audio.play();
       }, 500);
       setIsFinishGame(true);
-      if (points > record) {
+
+
+      console.log(point_redux, record_redux);
+
+      if (point_redux > record_redux) {
         await setIsRecord("You beat your record :)");
-        localStorage.setItem('record', points);
-        await setRecord(parseInt(localStorage.getItem('record')));
+        localStorage.setItem('record', point_redux);
+        console.log(parseInt(localStorage.getItem('record')));
+        dispatch(new_record(parseInt(localStorage.getItem('record'))));
+
+        //await setRecord(parseInt(localStorage.getItem('record')));
       }
       else {
         setIsRecord("But you don't beat your record :(");
@@ -84,7 +98,10 @@ function App() {
     {
       localStorage.setItem('record', 0);
     }
-    setRecord(localStorage.getItem('record'));
+
+    dispatch(new_record(localStorage.getItem('record')))
+    
+    //setRecord(localStorage.getItem('record'));
     setRedTIme(false);
     setIsModalWindow(true);
     setTimeLeft(30);
@@ -97,7 +114,9 @@ function App() {
     const gimn_audio = document.querySelector('.gimn');
     gimn_audio.pause();
     gimn_audio.currentTime = 0;
-    setPoints(0);
+    
+    dispatch(delete_point(point_redux));
+    //setPoints(0);
     if (timeId == true) {
       setInterval(async () => {
         await setTimeLeft((timeLeft) => (timeLeft >= 1 ? (timeLeft - 1) : 0));
@@ -121,14 +140,10 @@ function App() {
       <div className='block_game' onClick={missShot}>
 
         <Aliens isStart={isStart}
-          points={points}
-          setPoints={setPoints}
           patron={shots}
           setShots={setShots} />
 
         <Zombies isStart={isStart}
-          points={points}
-          setPoints={setPoints}
           patron={shots}
           setShots={setShots} />
       </div>
@@ -142,11 +157,11 @@ function App() {
 
         <div className='block_score'>
           <h1>Your score</h1>
-          <p>{points}</p>
+          <p>{point_redux}</p>
         </div>
         <div className='block_score'>
           <h1 className='record'>Your record</h1>
-          <p className='record'>{record}</p>
+          <p className='record'>{record_redux}</p>
         </div>
 
         <Shot patron={shots} />
